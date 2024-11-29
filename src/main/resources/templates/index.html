@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Список врачей педиаторов участковых </title>
+</head>
+<body>
+<h1>Список врачей</h1>
+<table border="2">
+    <tr>
+        <th>Список врачей</th>
+        <th>Изображение</th>
+        <th>Действия</th>
+        <th>Удалить из списка</th>
+    </tr>
+    <tr th:each="doctor : ${doctors}">
+        <td>
+            <a th:href="@{/doctor/{id}(id=${doctor.id})}" th:text="${doctor.name}">Список врачей</a>
+        </td>
+        <td>
+            <a th:href="@{/doctor/{id}(id=${doctor.fio})}" th:text="${doctor.fio}">ФИО</a>
+
+        </td>
+        <td>
+            <a th:href="@{'/doctor?id=' + ${doctor.id}}">Просмотр</a>
+
+        </td>
+        <td>
+            <a th:href="@{'/deleteDoct?id=' + ${doctor.id}}">Удалить из списка </a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
